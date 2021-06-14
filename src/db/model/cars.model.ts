@@ -1,6 +1,6 @@
 import { Column, Model, Table } from "sequelize-typescript";
 
-
+//Modelo da table na db
 
 @Table
 class Cars extends Model{
@@ -12,6 +12,8 @@ class Cars extends Model{
     cor!: string;
     @Column
     ano!: number;
+    @Column
+    estoque!: number; //incrementar a cada ocorrencia 
 
 
 }

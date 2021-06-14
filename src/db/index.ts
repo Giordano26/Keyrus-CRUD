@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
     dialect: "sqlite",
     username: "root",
     password: "",
-    storage: "./src/db/database.db",
+    storage: "./src/db/database.db", //local da db
     models: [__dirname +'/*/.model.ts']
 })
 

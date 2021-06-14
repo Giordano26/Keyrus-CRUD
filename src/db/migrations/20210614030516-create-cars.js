@@ -1,3 +1,5 @@
+//Migrations para o uso do sequelize, dados da db
+
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -18,6 +20,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       ano: {
+        type: Sequelize.INTEGER
+      },
+      estoque:{
         type: Sequelize.INTEGER
       },
       createdAt: {

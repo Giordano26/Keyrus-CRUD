@@ -19,7 +19,7 @@ export class App{
         this.app.use("/cars",carRoutes); //quando bater na rota '/cars' a o que está definido nas rotas do carro
     }
 
-    middlewares(){
+    middlewares(){ //sem uso por enquanto
     }
 }
 

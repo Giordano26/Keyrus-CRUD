@@ -6,7 +6,7 @@ class CarController{
         console.log("O pai ta funfando");
     }
 
-    async create(req:Request, res:Response){
+    async create(req:Request, res:Response){ //função para inserir novo elemento na db
         await Cars.create({
             marca: "Honda",
             modelo: "Civic",
