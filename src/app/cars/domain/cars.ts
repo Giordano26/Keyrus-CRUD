@@ -46,7 +46,6 @@ export class Cars extends Entity<CarsProps> {
 
     // ADICIONAR VALIDAÇÃO SOBRE OQ ESTA SENDO PAASSADO
 
-
     return new Cars({...props}, id) 
    }
 
