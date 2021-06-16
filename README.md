@@ -15,7 +15,7 @@
 - base_url: http://localhost:3000
 
 ### Cars
- - POST `localhost:3000/cars/:id` -  Create one car on the database
+ - POST `localhost:3000/cars/:amount` -  Create one car on the database with desired amount
 ```js
 request body:
 
