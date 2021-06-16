@@ -10,20 +10,41 @@ export class UpdateCarUsecase {
         this.carRepo = carRepo;
     }
 
-    async execute(req: Request , res: Response): Promise<void>{
+    async execute(req: Request , res: Response): Promise<void>{  // passando um id para função genérica de update
         try {
             let car: CreateCarDTO = req.body as CreateCarDTO;
-            let id = req.params.id as string
+            let carId: string = req.params.id as string
 
-            let cars = this.carRepo.update(id, car)
+            car = this.titleCaseCarInfo(car);
 
-            res.json({success: "true"})
+            let cars = await this.carRepo.update(carId, car);
+
+            res.json({ success: "true" });
         } catch (err) {
             console.log(`[UpdateCarUsecase][execute]: Uncaught controller error`);
             console.log(err);
 
-            res.json({error: err})
+            res.json({error: err});
         }
      
     }
+
+    private titleCaseCarInfo(car: CreateCarDTO): CreateCarDTO{
+        return {
+            marca: car.marca ? this.titleCase(car.marca) : car.marca ,
+            modelo: car.modelo ? this.titleCase(car.modelo) : car.modelo,
+            cor: car.cor ? this.titleCase(car.cor) : car.cor,
+            ano: car.ano,
+            estoque: car.estoque
+        }
+    }
+
+    //tratamento de string para primeira letra maiuscula 
+    private titleCase(word: string): string{
+        let new_word = word.slice(1).toLowerCase();
+        let hCase = word[0].toUpperCase();
+
+        let final = hCase + new_word
+        return final;
+      }
 }

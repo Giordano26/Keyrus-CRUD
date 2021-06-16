@@ -12,9 +12,9 @@ export class ReadCarUsecase {
 
     async execute(req: Request , res: Response): Promise<void>{
         try {
-            let cars = await this.carRepo.read()
+            let cars = await this.carRepo.read();
 
-            res.json({ cars })
+            res.json({ cars });
         } catch (err) {
             console.log(`[ReadCarUsecase][execute]: Uncaught controller error`);
             console.log(err);

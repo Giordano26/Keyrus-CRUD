@@ -13,13 +13,12 @@ export class DeleteCarUsecase {
     }
 
     async execute(req: Request, res: Response): Promise<void>{
-        let car: DeleteCarDTO = req.body as DeleteCarDTO // passar por req.params
+        let carId: string = req.params.id as string// passar por req.params
 
-        try {
-            this.carRepo.delete(car.id)
+        try { //Deleta a linha completa do carro
+            await this.carRepo.delete(carId);
 
-            
-            res.json({ sucess: true })
+            res.json({ success: true, status: "deleted" });
         } catch (err) {
             console.log(`[DeleteCarUsecase][execute]: Uncaught controller error`);
             console.log(err);

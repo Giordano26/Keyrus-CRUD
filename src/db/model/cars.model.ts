@@ -13,7 +13,7 @@ class Cars extends Model{
     @Column
     ano!: number;
     @Column
-    estoque!: number; //incrementar a cada ocorrencia 
+    estoque!: number; //incrementar a cada ocorrencia, unico valor alteravel na db
 }
 
 export default Cars;
