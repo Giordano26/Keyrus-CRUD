@@ -1,6 +1,6 @@
 import { Entity } from "./entity";
 
-interface CarsProps {  //propriedades da table
+export interface CarsProps {  //propriedades da table, tipagem da entidade
     id: string
     marca: string 
     modelo: string
@@ -9,7 +9,7 @@ interface CarsProps {  //propriedades da table
     estoque: number
 }
 
-// Criação de uma classe cars que vai necessita implmentar carProps para de fato ser um carrro
+// Criação de uma classe cars que vai necessita implmentar carProps para de fato ser um carro
 export class Cars extends Entity<CarsProps> {    
    constructor(props: CarsProps, id: string){
     super(props, id)
@@ -45,6 +45,7 @@ export class Cars extends Entity<CarsProps> {
    public static create(props: CarsProps, id: string): CarsProps {
 
     // ADICIONAR VALIDAÇÃO SOBRE OQ ESTA SENDO PAASSADO
+    // LOGGING
 
     return new Cars({...props}, id) 
    }

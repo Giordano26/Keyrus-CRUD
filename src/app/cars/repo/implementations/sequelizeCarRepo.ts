@@ -1,4 +1,5 @@
-import { Cars } from "../../domain/cars";
+import { Cars, CarsProps } from "../../domain/cars";
+import { CreateCarDTO } from "../../usecases/CreateCar/createCarDTO";
 import { ICarsRepo } from "../carsRepo";
 
 
@@ -9,14 +10,9 @@ export class SequelizeCarRepo implements ICarsRepo{
         this.model = model
     }
 
-    async save(cars: Cars): Promise<boolean>{
+    async save(cars: CreateCarDTO): Promise<boolean>{
         try {
-            await this.model.create({
-                marca: cars.marca,
-                modelo: cars.modelo,
-                cor: cars.cor,
-                ano: cars.ano,
-            })
+            await this.model.create({...cars})
             return true
         }catch(e){
             console.log(e)
@@ -24,18 +20,31 @@ export class SequelizeCarRepo implements ICarsRepo{
         }
     }
 
-    async read(): Promise<Cars>{
-        //todo
+    async read(): Promise<CarsProps[]> {
+        try {
+            let cars = await this.model.findAll({raw: true}) as CarsProps[];
+
+            return cars;
+        } catch(e) {
+            console.log(e)
+            return e
+        }
     }
 
-    async update(id: string, cars: Cars): Promise<string> {
-          //todo
-        return ""
+    async update(id: string, newCar: CreateCarDTO): Promise<void> {
+        try {
+            await this.model.update({...newCar}, {where: {id}})   
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
-    async delete(id: string): Promise<boolean> {
-          //todo
-        return false
+    async delete(id: string): Promise<void> {
+        try {
+            await this.model.destroy({ where: { id } })   
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

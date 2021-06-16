@@ -14,8 +14,6 @@ class Cars extends Model{
     ano!: number;
     @Column
     estoque!: number; //incrementar a cada ocorrencia 
-
-
 }
 
 export default Cars;

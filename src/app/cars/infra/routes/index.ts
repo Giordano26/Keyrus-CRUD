@@ -1,14 +1,19 @@
 import express from "express"
 
+import { createCarController } from "../../usecases/CreateCar";
+import { deleteCarController } from "../../usecases/DeleteCar";
+import { readCarController } from "../../usecases/ReadCar";
+import { updateCarController } from "../../usecases/UpdateCar";
+
 const carRouter = express.Router();
 
 // Substituir por usecases com validação
-carRouter.get("/", carController.read); //rota para chamada da função de read, metodo get
+carRouter.get("/", (req, res) => readCarController.execute(req, res)); // rota para chamada da função de read, metodo get
 
-carRouter.post("/", carController.create); //rota para chamada da função create, metodo post
+carRouter.post("/", (req, res) => createCarController.execute(req, res)); // rota para chamada da função create, metodo post
 
-carRouter.put("/",  carController.update) //rota para chamada da função update, metodo put
+carRouter.put("/:id",  (req, res) => updateCarController.execute(req, res)) // rota para chamada da função update, metodo put
 
-carRouter.delete("/", carController.delete) //rota para chamada da função delete, metodo delete
+carRouter.delete("/",  (req, res) => deleteCarController.execute(req, res)) // rota para chamada da função delete, metodo delete
 
 export default carRouter;
