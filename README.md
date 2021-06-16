@@ -20,8 +20,8 @@
 request body:
 
 {
-	Marca       string    `json:"marca"`
-	Modelo      string    `json:"modelo"`
+    Marca       string    `json:"marca"`
+    Modelo      string    `json:"modelo"`
     Cor         string    `json:"cor"`
     Ano         number    `json:"ano"`
 }
@@ -34,7 +34,7 @@ response:
 {
     Id          number    `json:"id"`
     Marca       string    `json:"marca"`
-	Modelo      string    `json:"modelo"`
+    Modelo      string    `json:"modelo"`
     Cor         string    `json:"cor"`
     Ano         number    `json:"ano"`
     Estoque     number    `json:"estoque"`
@@ -67,8 +67,8 @@ response:
 request body:
 
 {
-	Marca       string    `json:"marca"`
-	Modelo      string    `json:"modelo"`
+    Marca       string    `json:"marca"`
+    Modelo      string    `json:"modelo"`
     Cor         string    `json:"cor"`
     Ano         number    `json:"ano"`
 }
