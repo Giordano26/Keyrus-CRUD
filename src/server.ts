@@ -7,15 +7,14 @@ export class App{
     
     private app:Application; //declaração do tipo app como Application, express
 
-    constructor(port: string){
+    constructor(){
         this.app = express(); //istancia o app com as rotas do express
         this.middlewares();
         this.routes(); 
     }
 
-    async listen(){ //função de listen para entrar na porta 3000
-        var route = 3000;
-        await this.app.listen(route);
+    async listen(port: string){ //função de listen para entrar na porta 3000
+        await this.app.listen(port);
         console.log("aplicação rodando na porta 3000");
     }
 
